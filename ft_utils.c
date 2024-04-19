@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:25:55 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/16 19:28:05 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/19 19:24:28 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	ft_putstr(char *str)
 
 	i = 0;
 	if (!str)
+	{
 		write(1, "(null)", 6);
+		return (6);
+	}
 	while (*str)
 	{
 		write(1, str, 1);
@@ -34,7 +37,7 @@ int	ft_putstr(char *str)
 	return (i);
 }
 
-int	ft_print_hexa_min(size_t nb)
+int	ft_print_hexa_min(long long nb)
 {
 	int		result;
 	char	*base;
@@ -51,7 +54,7 @@ int	ft_print_hexa_min(size_t nb)
 	return (result);
 }
 
-int	ft_print_hexa_maj(size_t nb)
+int	ft_print_hexa_maj(long long nb)
 {
 	int		result;
 	char	*base;
@@ -60,8 +63,8 @@ int	ft_print_hexa_maj(size_t nb)
 	base = "0123456789ABCDEF";
 	if (nb >= 16)
 	{
-		result += ft_print_hexa_min(nb / 16);
-		result += ft_print_hexa_min(nb % 16);
+		result += ft_print_hexa_maj(nb / 16);
+		result += ft_print_hexa_maj(nb % 16);
 	}
 	else
 		result += ft_putchar(base[nb % 16]);

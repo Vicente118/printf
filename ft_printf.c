@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:25:52 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/16 20:18:56 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/19 20:00:19 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	ft_find_format(va_list arg_list, char c)
 	else if (c == 's')
 		result = ft_putstr(va_arg(arg_list, char *));
 	else if (c == 'x')
-		result = ft_print_hexa_min(va_arg(arg_list, size_t));
+		result = ft_print_hexa_min(va_arg(arg_list, long long));
 	else if (c == 'X')
-		result = ft_print_hexa_maj(va_arg(arg_list, size_t));
+		result = ft_print_hexa_maj(va_arg(arg_list, long long));
 	// else if (c == 'p')
 	// {
-	// 	result = ft_putstr("0x");
-	// 	result += ft_print_adress(va_arg(arg_list, void *));
+	// 	result += ft_putstr("0x");
+	// 	result += ft_print_hexa_maj(va_arg(arg_list, long long));
 	// }
 	else if (c == '%')
 		result = ft_putchar('%');
@@ -43,10 +43,12 @@ int	check_next_char(char *str)
 {
 	char	c;
 
+	if (!*(str + 1))
+		return (0);
 	c = *(str + 1);
-	if (c == 'i' || c == 'd' || c == 'u' || c == 'c'
+	if ((c == 'i' || c == 'd' || c == 'u' || c == 'c'
 		|| c == 's' || c == 'x' || c == 'X' || c == 'p'
-		|| c == '%')
+		|| c == '%'))
 	{
 		return (1);
 	}
@@ -66,26 +68,21 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*str == '%' && check_next_char(str))
 		{
-			if (*(str + 1) != '\0')
-			{
-				result += ft_find_format(arg_list, *(str + 1));
-				str++;
-			}
+			result += ft_find_format(arg_list, *(str + 1));
+			str++;
 		}
 		else
-			result += ft_putchar(*(str));
+			result += ft_putchar(*str);
 		str++;
 	}
 	va_end(arg_list);
 	return (result);
 }
-/*
-int main(void)
-{
-	int	a = 65819;
-	int	*ptr = &a; 
-	ft_printf("Bonjour j'ai %p ans", 'G', ptr);
-	//printf("Bonjour j'ai %c %d %u %d ans", 'G', 1616, 58671987);
-	return (0);
-}
-*/
+
+
+// int main(void)
+// {
+// 	ft_printf("%p", -1);
+// 	printf("%p", -1);
+// 	return (0);
+// }

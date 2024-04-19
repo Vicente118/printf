@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:25:40 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/16 20:18:01 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/19 19:03:26 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdarg.h>
+# include <stdio.h>
+# include <limits.h>
 
 // COEUR DU PROGRAMME
 int	ft_printf(const char *format, ...);
@@ -25,9 +27,9 @@ int	check_next_char(char *str);
 // UTILS
 int	ft_putchar(char c);
 int	ft_putstr(char *str);
-int	ft_print_hexa_min(size_t nb);
-int	ft_print_hexa_maj(size_t nb);
+int	ft_print_hexa_min(long long nb);
+int	ft_print_hexa_maj(long long nb);
 int	ft_putnbr(int nb);
-int	ft_unsigned_putnbr(unsigned int nb);
+unsigned int	ft_unsigned_putnbr(unsigned int nb);
 
 #endif

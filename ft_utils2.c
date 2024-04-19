@@ -6,15 +6,15 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:25:56 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/16 20:16:30 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/19 15:18:31 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_unsigned_putnbr(unsigned int nb)
+unsigned int	ft_unsigned_putnbr(unsigned int nb)
 {
-	int	result;
+	unsigned int	result;
 
 	result = 0;
 	if (nb > 9)
