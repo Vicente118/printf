@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:25:52 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/19 20:00:19 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/22 13:39:12 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	ft_find_format(va_list arg_list, char c)
 	else if (c == 's')
 		result = ft_putstr(va_arg(arg_list, char *));
 	else if (c == 'x')
-		result = ft_print_hexa_min(va_arg(arg_list, long long));
+		result = ft_print_hexa_min(va_arg(arg_list, unsigned int));
 	else if (c == 'X')
-		result = ft_print_hexa_maj(va_arg(arg_list, long long));
-	// else if (c == 'p')
-	// {
-	// 	result += ft_putstr("0x");
-	// 	result += ft_print_hexa_maj(va_arg(arg_list, long long));
-	// }
+		result = ft_print_hexa_maj(va_arg(arg_list, unsigned int));
+	else if (c == 'p')
+	{
+		result += ft_putstr("0x");
+		result += ft_print_hexa_min_long(va_arg(arg_list, unsigned long));
+	}
 	else if (c == '%')
 		result = ft_putchar('%');
 	return (result);
@@ -47,8 +47,8 @@ int	check_next_char(char *str)
 		return (0);
 	c = *(str + 1);
 	if ((c == 'i' || c == 'd' || c == 'u' || c == 'c'
-		|| c == 's' || c == 'x' || c == 'X' || c == 'p'
-		|| c == '%'))
+			|| c == 's' || c == 'x' || c == 'X' || c == 'p'
+			|| c == '%'))
 	{
 		return (1);
 	}
@@ -79,10 +79,9 @@ int	ft_printf(const char *format, ...)
 	return (result);
 }
 
-
 // int main(void)
 // {
-// 	ft_printf("%p", -1);
-// 	printf("%p", -1);
+// 	ft_printf("test %d%d", 6874, 9);
+
 // 	return (0);
 // }

@@ -6,13 +6,13 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:25:56 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/19 15:18:31 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/22 13:39:33 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_unsigned_putnbr(unsigned int nb)
+int	ft_unsigned_putnbr(unsigned int nb)
 {
 	unsigned int	result;
 
@@ -26,9 +26,29 @@ unsigned int	ft_unsigned_putnbr(unsigned int nb)
 		result += ft_putchar(nb + 48);
 	return (result);
 }
-/*
-int	ft_putnbr_(unsigned int nb, int i, size_t *len)
+
+int	ft_print_hexa_min_long(unsigned long nb)
 {
-	
+	int		result;
+	char	*base;
+
+	result = 0;
+	base = "0123456789abcdef";
+	if (nb >= 16)
+	{
+		result += ft_print_hexa_min_long(nb / 16);
+		result += ft_print_hexa_min_long(nb % 16);
+	}
+	else
+		result += ft_putchar(base[nb % 16]);
+	return (result);
 }
-*/
+
+int	ft_print_adress(unsigned long nb)
+{
+	int	result;
+
+	result = 0;
+	result += ft_print_hexa_min_long(nb);
+	return (result);
+}

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:25:55 by vdarras           #+#    #+#             */
-/*   Updated: 2024/04/19 19:24:28 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/04/22 13:17:49 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_putstr(char *str)
 	return (i);
 }
 
-int	ft_print_hexa_min(long long nb)
+int	ft_print_hexa_min(unsigned int nb)
 {
 	int		result;
 	char	*base;
@@ -54,7 +54,7 @@ int	ft_print_hexa_min(long long nb)
 	return (result);
 }
 
-int	ft_print_hexa_maj(long long nb)
+int	ft_print_hexa_maj(unsigned int nb)
 {
 	int		result;
 	char	*base;
